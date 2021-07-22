@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx0-deployment
+  labels:
+    app: nginx0-deployment
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: nginx0
+  template:
+    metadata:
+      labels:
+        app: nginx0
+    spec:
+      containers:
+      - name: nginx
+        image: cppocacr.azurecr.io/nginx:v1
+        ports:
+        - containerPort: 8080
